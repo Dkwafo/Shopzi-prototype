@@ -70,6 +70,10 @@ ol.list{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:1
   border-radius:var(--pill);text-decoration:none;color:var(--deep);
   box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s var(--ease)}
 .item .open:hover,.item .open:focus-visible{box-shadow:inset 0 0 0 2px var(--deep)}
+/* a version we cannot serve. Greyed, but still listed, or the sequence has a hole in it */
+.item.gone{background:#FBFAF5}
+.item.gone h3{color:var(--mid)}
+.item .open.off{color:var(--soft);box-shadow:inset 0 0 0 1px var(--hair);cursor:default}
 
 .note{margin-top:30px;padding:18px 20px;background:var(--grn-soft);border-radius:var(--r-m);
   font-size:14.5px;color:var(--ink);line-height:1.65}
@@ -141,14 +145,15 @@ footer a{color:var(--deep)}
         <a class="open" href="v2.html">Open<span class="sr-only"> version 2</span></a>
       </li>
 
-      <li class="item">
+      <li class="item gone">
         <div class="body">
           <span class="when">June 2026</span>
-          <h3><a href="https://ebb-and-glow-ai.lovable.app" rel="noopener">First prototype, built in Lovable</a></h3>
-          <p>The starting point, before the design system existed. Hosted elsewhere, so it may
-            disappear without notice.</p>
+          <h3>First prototype, built in Lovable</h3>
+          <p>The starting point, before the design system existed. Not archived here: it lived on
+            a Lovable subdomain, and that address now serves an unrelated app. Listed so the
+            sequence is complete.</p>
         </div>
-        <a class="open" href="https://ebb-and-glow-ai.lovable.app" rel="noopener">Open<span class="sr-only"> the Lovable prototype</span></a>
+        <span class="open off">No longer online</span>
       </li>
     </ol>
 
