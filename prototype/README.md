@@ -49,8 +49,7 @@ Palette, typography and radius are documented in `design-foundations.html`, kept
 with the design files rather than in this repo, along with `DESIGN.md` — the
 binding accessibility and quality rules for the project.
 
-## Earlier versions in this repo
+## Earlier versions
 
-- `v2.html` — warm artisan design version
-- `v3.html` — SHOPZI v3, retail marketplace layout
-- Lovable prototype: https://ebb-and-glow-ai.lovable.app
+Every version shared with the team, with the reason each was dropped:
+https://dkwafo.github.io/Shopzi-prototype/archive/
