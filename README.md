@@ -9,7 +9,7 @@ That link always points at the current version. Nothing else in this repo needs 
 | Folder | What it is |
 |---|---|
 | `prototype/` | **The current prototype.** Four linked pages plus the hero image |
-| `archive/` | Superseded versions, kept only for reference |
+| `archive/` | Superseded versions. [Browse them here](https://dkwafo.github.io/Shopzi-prototype/archive/) |
 | `index.html` | A redirect at the root, so the short link above keeps working |
 
 ## The current prototype
@@ -41,6 +41,8 @@ Everything is linked. The top bar, the burger menu and the logo work from every 
 
 ## Archive
 
-- `archive/v2.html` — warm artisan design version
-- `archive/v3.html` — SHOPZI v3, retail marketplace layout
-- Lovable prototype: https://ebb-and-glow-ai.lovable.app
+Every version that has been shared with the team, with a note on why each was dropped:
+**https://dkwafo.github.io/Shopzi-prototype/archive/**
+
+When a version is replaced, a dated copy of it is added there as a folder. The current
+version always lives at `prototype/`, so the link shared with the team never changes.
