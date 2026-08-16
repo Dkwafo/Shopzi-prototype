@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hand-woven kente, 2 yards — Shopziexpress</title>
-<meta name="description" content="Two yards of hand-woven kente from Bonwire, Ghana. VAT included, money held until your order arrives.">
+<title>Start selling — Shopziexpress</title>
+<meta name="description" content="Sell products or offer services on Shopziexpress. One account for both, 10% on products, 15% on services, no listing fees.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   SHOPZIEXPRESS — PRODUCT DETAIL
+   SHOPZIEXPRESS — START SELLING
    Same tokens as the landing page. Nothing new invented.
    ============================================================ */
 :root{
@@ -531,33 +531,6 @@ body{background:var(--cream)}
 .fbase{padding-bottom:26px}
 
 /* ============================================================
-   TEASER ROWS — one row, always full, never orphaned.
-   A grid with five cards in a six-column track leaves a hole at
-   the end. These rows scroll instead: the card keeps the width it
-   was designed at, the row shows as many as the screen fits, and
-   the part-visible card at the edge is the affordance. Same
-   mechanics as the seasonal band — user-driven, nothing autoplays.
-   ============================================================ */
-.row-scroll{display:flex!important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:thin;
-  scrollbar-color:var(--line) transparent}
-.row-scroll::-webkit-scrollbar{height:8px}
-.row-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:var(--pill)}
-.row-scroll::-webkit-scrollbar-track{background:transparent}
-.row-scroll>*{flex:0 0 clamp(210px,17.5vw,262px);scroll-snap-align:start}
-.row-scroll.svcs>*{flex:0 0 clamp(250px,22vw,318px)}
-@media(max-width:560px){
-  .row-scroll>*{flex:0 0 78vw}
-  .row-scroll.svcs>*{flex:0 0 82vw}
-}
-@media (prefers-reduced-motion:reduce){.row-scroll{scroll-behavior:auto}}
-
-/* the wide-screen column bumps only apply to real grids now */
-@media(min-width:1500px){
-  .row-scroll{grid-template-columns:none}
-}
-
-/* ============================================================
    WHITE PAGE  (16 Aug 2026)
    Cream ground -> pure white, nav band included.
    ============================================================ */
@@ -679,237 +652,134 @@ body,.navwrap{background:var(--ground)}
 </style>
 <style>
 /* ============================================================
-   PRODUCT DETAIL — new components only.
-   Everything above this block is shared with shop.html.
-   New class names are prefixed pd- so they cannot collide with
-   the listing components (the .tile.svc / .svc collision cost us
-   an afternoon once already).
+   START SELLING — seller-side landing.
+   All new names prefixed sl- so nothing collides with the buyer
+   pages, and nothing sits unscoped inside .nav.
    ============================================================ */
 
-.pd-top{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);
-  gap:26px;align-items:start;margin-top:14px}
-@media(max-width:900px){.pd-top{grid-template-columns:1fr}}
+.sl-hero{background:var(--deep);border-radius:var(--r-xl);padding:44px 40px 46px;color:#fff;
+  margin-top:14px}
+.sl-hero :where(a,button):focus-visible{outline-color:var(--yel)}
+.sl-hero h1{font-size:clamp(28px,4.2vw,46px);line-height:1.06;max-width:16ch}
+.sl-hero p{margin-top:16px;font-size:17px;line-height:1.6;color:rgba(255,255,255,.84);
+  max-width:54ch}
+.sl-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.sl-cta a{display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:800;
+  padding:15px 26px;border-radius:var(--pill);
+  transition:background .2s var(--ease),box-shadow .2s var(--ease),color .2s var(--ease)}
+.sl-cta .go{background:var(--yel);color:var(--deep)}
+.sl-cta .go:hover,.sl-cta .go:focus-visible{background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.24)}
+.sl-cta .alt{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+.sl-cta .alt:hover,.sl-cta .alt:focus-visible{background:#fff;color:var(--deep)}
+.sl-facts{display:flex;flex-wrap:wrap;gap:14px 34px;margin-top:30px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.18)}
+.sl-facts div{min-width:120px}
+.sl-facts b{display:block;font-size:26px;font-weight:800;letter-spacing:-.035em;color:var(--yel)}
+.sl-facts span{display:block;font-size:13.5px;color:rgba(255,255,255,.78);margin-top:3px}
+@media(max-width:640px){.sl-hero{padding:32px 22px 34px}}
 
-/* ---------- gallery ---------- */
-.pd-gal{position:sticky;top:88px}
-@media(max-width:900px){.pd-gal{position:static}}
-.pd-main{position:relative;aspect-ratio:4/3;border-radius:var(--r-xl);overflow:hidden;
-  background:var(--hair);box-shadow:var(--sh)}
-.pd-main .grain{position:absolute;inset:0;opacity:.22;filter:url(#gn);pointer-events:none}
-.pd-shot{position:absolute;inset:0;display:none}
-.pd-shot.on{display:block}
-.pd-thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-.pd-thumb{width:74px;height:60px;border-radius:var(--r-s);overflow:hidden;position:relative;
-  box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .18s var(--ease)}
-.pd-thumb .sw{position:absolute;inset:0}
-.pd-thumb[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--deep)}
-.pd-thumb:hover{box-shadow:inset 0 0 0 2.5px var(--deep)}
-.pd-photonote{margin-top:10px;font-size:12.5px;color:var(--soft);display:flex;
-  align-items:center;gap:7px}
+.sl-sec{margin-top:40px}
+.sl-sec>h2{font-size:clamp(21px,2.4vw,27px);margin-bottom:6px}
+.sl-sec>.lede{font-size:15.5px;color:var(--mid);max-width:62ch;line-height:1.6;
+  margin-bottom:18px}
 
-/* ---------- buy box ---------- */
-.pd-buy{background:var(--white);border-radius:var(--r-xl);padding:22px;box-shadow:var(--sh)}
-.pd-buy h1{font-size:clamp(23px,2.5vw,30px);margin-bottom:9px}
-.pd-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px 16px;font-size:13.5px;
-  color:var(--mid);font-weight:600}
-.pd-meta a{text-decoration:underline;text-underline-offset:3px}
-.pd-meta .st{display:inline-flex;align-items:center;gap:5px;color:var(--ink);font-weight:700}
-.pd-meta .st svg{color:var(--yel)}
+/* two ways to earn */
+.sl-two{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.sl-two{grid-template-columns:1fr}}
+.sl-card{background:var(--white);border-radius:var(--r-xl);padding:24px;box-shadow:var(--sh);
+  display:flex;flex-direction:column}
+.sl-card .ic{width:46px;height:46px;border-radius:var(--r-m);background:var(--yel-soft);
+  display:grid;place-items:center;color:var(--deep);margin-bottom:14px}
+.sl-card h3{font-size:19px;margin-bottom:8px}
+.sl-card p{font-size:15px;color:var(--mid);line-height:1.6}
+.sl-card ul{margin:14px 0 0 18px;font-size:14.5px;color:var(--mid);line-height:1.7}
+.sl-rate{margin-top:auto;padding-top:18px;display:flex;align-items:baseline;gap:9px}
+.sl-rate b{font-size:30px;font-weight:800;letter-spacing:-.04em;color:var(--deep)}
+.sl-rate span{font-size:13.5px;color:var(--mid);font-weight:600}
 
-.pd-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:11px;margin:18px 0 5px}
-.pd-price b{font-size:31px;font-weight:800;letter-spacing:-.035em;color:var(--deep)}
-.pd-price s{font-size:17px;color:var(--soft);font-weight:600}
-.pd-off{font-size:13px;font-weight:800;padding:5px 11px;border-radius:var(--pill);
-  background:var(--yel);color:var(--deep)}
-.pd-tax{font-size:13.5px;color:var(--mid);line-height:1.55}
-.pd-tax b{font-weight:700;color:var(--ink)}
+/* steps */
+.sl-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+@media(max-width:900px){.sl-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.sl-steps{grid-template-columns:1fr}}
+.sl-step{background:var(--white);border-radius:var(--r-l);padding:20px;box-shadow:var(--sh)}
+.sl-step .n{width:32px;height:32px;border-radius:50%;background:var(--deep);color:var(--yel);
+  display:grid;place-items:center;font-size:14.5px;font-weight:800;margin-bottom:12px}
+.sl-step h3{font-size:16px;margin-bottom:6px}
+.sl-step p{font-size:14px;color:var(--mid);line-height:1.6}
 
-.pd-opt{margin-top:20px}
-.pd-opt h2{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  color:var(--mid);margin-bottom:9px}
-.pd-opt h2 .v{text-transform:none;letter-spacing:0;color:var(--ink);font-weight:700}
-.pd-swatches{display:flex;flex-wrap:wrap;gap:9px}
-.pd-swatches label{position:relative;cursor:pointer}
-.pd-swatches input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.pd-swatches .b{display:block;width:44px;height:44px;border-radius:var(--r-s);
-  box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .18s var(--ease)}
-.pd-swatches input:checked+.b{box-shadow:inset 0 0 0 3px var(--deep)}
-.pd-swatches input:focus-visible+.b{outline:3px solid var(--deep);outline-offset:3px}
-.pd-sizes{display:flex;flex-wrap:wrap;gap:9px}
-.pd-sizes label{position:relative;cursor:pointer}
-.pd-sizes input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.pd-sizes .b{display:block;padding:10px 17px;border-radius:var(--pill);font-size:14px;
-  font-weight:700;box-shadow:inset 0 0 0 1px var(--line);transition:background .18s var(--ease),color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease)}
-.pd-sizes input:checked+.b{box-shadow:inset 0 0 0 2px var(--deep);background:var(--deep);color:#fff}
-.pd-sizes input:focus-visible+.b{outline:3px solid var(--deep);outline-offset:3px}
-.pd-sizes input:disabled+.b{color:var(--soft);text-decoration:line-through;cursor:not-allowed;
-  box-shadow:inset 0 0 0 1px var(--hair)}
+/* fees */
+table.sl-fees{width:100%;border-collapse:collapse;font-size:15px;background:var(--white);
+  border-radius:var(--r-l);overflow:hidden;box-shadow:var(--sh)}
+table.sl-fees th,table.sl-fees td{text-align:left;padding:15px 22px;
+  border-bottom:1px solid var(--hair)}
+table.sl-fees tr:last-child th,table.sl-fees tr:last-child td{border-bottom:0}
+table.sl-fees th{font-weight:600;color:var(--mid)}
+table.sl-fees td{font-weight:800;text-align:right;color:var(--deep);white-space:nowrap}
+.sl-note{margin-top:14px;font-size:14px;color:var(--mid);line-height:1.65;max-width:70ch}
 
-.pd-qtyrow{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:20px}
-.pd-qty{display:flex;flex-direction:column;gap:7px}
-.pd-qty span{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  color:var(--mid)}
-.pd-qty select{font-family:inherit;font-size:15px;font-weight:700;padding:12px 14px;
-  border-radius:var(--r-s);background:var(--white);color:var(--ink);
-  box-shadow:inset 0 0 0 1px var(--line);border:0}
-.pd-stock{flex:1 1 190px;font-size:14px;font-weight:700;display:flex;align-items:center;
-  gap:8px;padding-bottom:12px}
-.pd-stock .dot{width:9px;height:9px;border-radius:50%;background:var(--grn);flex:0 0 9px}
-.pd-stock.low{color:var(--grn-d)}
-.pd-stock.low .dot{background:var(--grn-d)}
-.pd-stock.out{color:var(--mid)}
-.pd-stock.out .dot{background:var(--line)}
+/* checklist + what you get */
+.sl-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.sl-cols{grid-template-columns:1fr}}
+.sl-list{background:var(--white);border-radius:var(--r-xl);padding:24px;box-shadow:var(--sh)}
+.sl-list h3{font-size:17px;margin-bottom:12px}
+.sl-list li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--mid);
+  line-height:1.6;padding:8px 0;list-style:none}
+.sl-list li svg{flex:0 0 17px;color:var(--grn);margin-top:2px}
+.sl-list b{color:var(--ink);font-weight:700}
 
-.pd-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:18px}
-.pd-add{flex:1 1 220px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  background:var(--yel);color:var(--deep);font-size:16px;font-weight:800;padding:15px 22px;
-  border-radius:var(--pill);box-shadow:inset 0 0 0 0 var(--deep);
-  transition:background .2s var(--ease),box-shadow .2s var(--ease)}
-.pd-add:hover,.pd-add:focus-visible{background:#fff;box-shadow:inset 0 0 0 2px var(--deep)}
-.pd-add[disabled]{background:var(--hair);color:var(--soft);cursor:not-allowed;box-shadow:none}
-.pd-save{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;font-size:15px;
-  font-weight:700;padding:15px 20px;border-radius:var(--pill);color:var(--deep);
-  box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s var(--ease)}
-.pd-save:hover,.pd-save:focus-visible{box-shadow:inset 0 0 0 2px var(--deep)}
-.pd-save[aria-pressed="true"]{background:var(--yel-soft);box-shadow:inset 0 0 0 2px var(--deep)}
-.pd-sep{margin-top:14px;font-size:13px;color:var(--mid);line-height:1.55}
+/* money band */
+.sl-money{background:var(--grn-soft);border-radius:var(--r-xl);padding:26px 24px;
+  display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.sl-money .ic{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:var(--white);
+  display:grid;place-items:center;color:var(--grn-d)}
+.sl-money div{flex:1 1 300px}
+.sl-money h3{font-size:18px;margin-bottom:7px}
+.sl-money p{font-size:15px;color:var(--ink);line-height:1.65;max-width:70ch}
 
-/* seller strip */
-.pd-seller{margin-top:20px;padding-top:19px;border-top:1px solid var(--hair)}
-.pd-seller .who{display:flex;align-items:center;gap:11px}
-.pd-seller .av{width:44px;height:44px;flex:0 0 44px;border-radius:50%;display:grid;
-  place-items:center;font-weight:800;font-size:17px;color:#fff}
-.pd-seller .nm{font-size:16px;font-weight:800;display:flex;align-items:center;gap:6px}
-.pd-seller .nm .vf{color:var(--grn)}
-.pd-seller .sub{font-size:13px;color:var(--mid);font-weight:600;margin-top:2px}
-.pd-seller .lnks{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}
-.pd-seller .lnks a{font-size:14px;font-weight:700;padding:10px 17px;border-radius:var(--pill);
-  box-shadow:inset 0 0 0 1px var(--line);display:inline-flex;align-items:center;gap:8px;
-  transition:box-shadow .2s var(--ease)}
-.pd-seller .lnks a:hover,.pd-seller .lnks a:focus-visible{box-shadow:inset 0 0 0 2px var(--deep)}
-.pd-ship{margin-top:15px;background:var(--grn-soft);border-radius:var(--r-m);padding:13px 15px;
-  font-size:14px;line-height:1.55;display:flex;gap:11px;align-items:flex-start}
-.pd-ship svg{flex:0 0 19px;color:var(--grn-d);margin-top:2px}
-.pd-ship b{font-weight:800}
+/* faq */
+.sl-faq{background:var(--white);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh)}
+.sl-faq details+details{border-top:1px solid var(--hair)}
+.sl-faq summary{list-style:none;cursor:pointer;padding:17px 22px;font-size:15.5px;
+  font-weight:700;display:flex;align-items:center;gap:12px;min-height:44px}
+.sl-faq summary::-webkit-details-marker{display:none}
+.sl-faq summary .chev{margin-left:auto;flex:0 0 14px;transition:transform .2s var(--ease)}
+.sl-faq details[open] summary .chev{transform:rotate(180deg)}
+.sl-faq .body{padding:0 22px 18px;font-size:14.5px;color:var(--mid);line-height:1.7;
+  max-width:74ch}
 
-/* protection accordion */
-.pd-prot{margin-top:16px;border-radius:var(--r-m);background:var(--cream);overflow:hidden}
-.pd-prot details+details{border-top:1px solid var(--hair)}
-.pd-prot summary{list-style:none;cursor:pointer;padding:14px 16px;font-size:14.5px;
-  font-weight:700;display:flex;align-items:center;gap:10px}
-.pd-prot summary::-webkit-details-marker{display:none}
-.pd-prot summary .chev{margin-left:auto;transition:transform .2s var(--ease);flex:0 0 14px}
-.pd-prot details[open] summary .chev{transform:rotate(180deg)}
-.pd-prot .body{padding:0 16px 15px 42px;font-size:14px;color:var(--mid);line-height:1.65}
-.pd-prot .body b{color:var(--ink);font-weight:700}
-.pd-pay{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;align-items:center}
-.pd-pay span{font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:var(--r-s);
-  background:var(--cream);color:var(--mid)}
-
-/* ---------- lower sections ---------- */
-.pd-sec{margin-top:38px}
-.pd-sec>h2{font-size:clamp(20px,2.2vw,25px);margin-bottom:14px}
-.pd-panel{background:var(--white);border-radius:var(--r-xl);padding:22px;box-shadow:var(--sh)}
-.pd-cols{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:26px}
-@media(max-width:820px){.pd-cols{grid-template-columns:1fr}}
-.pd-body p{font-size:15.5px;line-height:1.7;color:var(--mid);max-width:68ch}
-.pd-body p+p{margin-top:13px}
-.pd-body h3{font-size:16px;margin:20px 0 8px}
-.pd-body ul{margin:9px 0 0 19px;font-size:15px;line-height:1.75;color:var(--mid)}
-table.pd-spec{width:100%;border-collapse:collapse;font-size:14.5px}
-table.pd-spec th,table.pd-spec td{text-align:left;padding:11px 2px;
-  border-bottom:1px solid var(--hair);vertical-align:top}
-table.pd-spec th{font-weight:700;color:var(--mid);width:44%}
-table.pd-spec td{font-weight:600}
-
-/* delivery */
-.pd-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.pd-fact{display:flex;gap:12px;align-items:flex-start}
-.pd-fact .ic{width:38px;height:38px;flex:0 0 38px;border-radius:var(--r-s);
-  background:var(--yel-soft);display:grid;place-items:center;color:var(--deep)}
-.pd-fact h3{font-size:15px;margin-bottom:4px}
-.pd-fact p{font-size:13.5px;color:var(--mid);line-height:1.6}
-
-/* reviews */
-.pd-rev{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:26px}
-@media(max-width:760px){.pd-rev{grid-template-columns:1fr}}
-.pd-score{text-align:center}
-.pd-score b{display:block;font-size:52px;font-weight:800;letter-spacing:-.04em;
-  line-height:1;color:var(--deep)}
-.pd-score .stars{display:flex;justify-content:center;gap:3px;margin:9px 0 6px;color:var(--yel)}
-.pd-score .cnt{font-size:13.5px;color:var(--mid);font-weight:600}
-.pd-bars{margin-top:16px;display:flex;flex-direction:column;gap:7px}
-.pd-barrow{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--mid);
-  font-weight:700}
-.pd-barrow .tr{flex:1;height:8px;border-radius:var(--pill);background:var(--hair);overflow:hidden}
-.pd-barrow .fl{height:100%;background:var(--grn);border-radius:var(--pill)}
-.pd-review+.pd-review{margin-top:18px;padding-top:18px;border-top:1px solid var(--hair)}
-.pd-rhead{display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px}
-.pd-rhead .av{width:34px;height:34px;flex:0 0 34px;border-radius:50%;display:grid;
-  place-items:center;font-weight:800;font-size:13px;color:#fff}
-.pd-rhead .nm{font-size:14.5px;font-weight:800}
-.pd-rhead .vp{font-size:12px;font-weight:800;padding:4px 10px;border-radius:var(--pill);
-  background:var(--grn-soft);color:var(--grn-d);display:inline-flex;align-items:center;gap:5px}
-.pd-rhead .dt{font-size:13px;color:var(--soft);font-weight:600;margin-left:auto}
-.pd-rstars{display:flex;gap:2px;color:var(--yel);margin:9px 0 7px}
-.pd-review p{font-size:15px;line-height:1.65;color:var(--mid);max-width:70ch}
-.pd-rfoot{display:flex;gap:9px;margin-top:11px}
-.pd-rfoot button{font-size:13px;font-weight:700;padding:8px 14px;border-radius:var(--pill);
-  color:var(--mid);box-shadow:inset 0 0 0 1px var(--hair);transition:background .18s var(--ease),color .18s var(--ease),box-shadow .18s var(--ease),transform .18s var(--ease)}
-.pd-rfoot button:hover,.pd-rfoot button:focus-visible{box-shadow:inset 0 0 0 1px var(--line);
-  color:var(--ink)}
-
-/* ---------- fixed product card (resolves the listing card bug) ---------- */
-.pd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:16px}
-.pd-card{position:relative;background:var(--white);border-radius:var(--r-l);overflow:hidden;
-  display:flex;flex-direction:column;box-shadow:var(--sh);
-  transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
-.pd-card:hover{transform:translateY(-3px);box-shadow:var(--sh-h)}
-.pd-card:focus-within{box-shadow:var(--sh-h)}
-.pd-card .cimg{position:relative;aspect-ratio:4/3}
-.pd-card .grain{position:absolute;inset:0;opacity:.22;filter:url(#gn)}
-.pd-card .pd-fav{position:absolute;top:9px;right:9px;z-index:2;width:32px;height:32px;
-  border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;
-  color:var(--deep);box-shadow:0 2px 8px rgba(0,0,0,.16)}
-.pd-card .pd-fav[aria-pressed="true"]{background:var(--yel)}
-.pd-card .in{padding:13px 14px 15px;display:flex;flex-direction:column;flex:1}
-.pd-card h3{font-size:14.5px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
-/* one link in the accessibility tree, whole card still clickable */
-.pd-card h3 a::after{content:"";position:absolute;inset:0;z-index:1}
-.pd-card h3 a:focus-visible{outline:none}
-.pd-card:has(h3 a:focus-visible){outline:3px solid var(--deep);outline-offset:3px}
-.pd-card .sl{font-size:12.5px;color:var(--mid);font-weight:600;margin-bottom:6px;
-  display:flex;align-items:center;gap:5px}
-.pd-card .sl .vf{color:var(--grn);flex:0 0 12px}
-.pd-card .shp{font-size:12.5px;color:var(--soft);font-weight:600;margin-top:6px;
-  display:flex;align-items:center;gap:6px}
-.pd-card .pr{margin-top:9px;font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--deep)}
-.pd-card .pr small{display:block;font-size:12px;font-weight:600;color:var(--mid);
-  letter-spacing:0;margin-top:2px}
-.pd-card .buy{position:relative;z-index:2;margin-top:12px;width:100%;
-  background:var(--yel);color:var(--deep);font-size:13.5px;font-weight:800;padding:11px;
-  border-radius:var(--pill);box-shadow:inset 0 0 0 0 var(--deep);
-  transition:background .2s var(--ease),box-shadow .2s var(--ease)}
-.pd-card .buy:hover,.pd-card .buy:focus-visible{background:#fff;box-shadow:inset 0 0 0 2px var(--deep)}
-
-/* cross-sell to services */
-.pd-cross{margin-top:38px;background:var(--deep);border-radius:var(--r-xl);padding:26px 24px;
+/* closing band */
+.sl-end{margin-top:40px;background:var(--deep);border-radius:var(--r-xl);padding:34px 28px;
   color:#fff;display:flex;flex-wrap:wrap;gap:20px;align-items:center}
-.pd-cross :where(a,button):focus-visible{outline-color:var(--yel)}
-.pd-cross .t{flex:1 1 320px}
-.pd-cross h2{font-size:clamp(19px,2.1vw,24px);color:#fff}
-.pd-cross p{margin-top:8px;font-size:15px;color:rgba(255,255,255,.82);max-width:52ch;
-  line-height:1.55}
-.pd-cross a{display:inline-flex;align-items:center;gap:10px;background:var(--yel);
-  color:var(--deep);font-weight:800;font-size:15px;padding:13px 13px 13px 22px;
-  border-radius:var(--pill);transition:background .2s var(--ease),box-shadow .2s var(--ease)}
-.pd-cross a .arw{width:30px;height:30px;border-radius:50%;background:var(--yel);
-  display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(2,53,37,.22);
-  transition:transform .22s var(--ease)}
-.pd-cross a:hover,.pd-cross a:focus-visible{background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.24)}
-.pd-cross a:hover .arw{transform:rotate(45deg)}
+.sl-end :where(a,button):focus-visible{outline-color:var(--yel)}
+.sl-end .t{flex:1 1 320px}
+.sl-end h2{font-size:clamp(20px,2.3vw,26px);color:#fff}
+.sl-end p{margin-top:8px;font-size:15px;color:rgba(255,255,255,.82);max-width:56ch;
+  line-height:1.6}
 
-.pd-note{margin-top:26px;font-size:13px;color:var(--soft);line-height:1.6;max-width:80ch}
+/* ---- the Sell band that goes on the landing page ---- */
+.sell-band{margin-top:34px;background:var(--deep);border-radius:var(--r-xl);
+  padding:32px 30px;color:#fff;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:28px;align-items:center}
+@media(max-width:860px){.sell-band{grid-template-columns:1fr;padding:26px 22px}}
+.sell-band :where(a,button):focus-visible{outline-color:var(--yel)}
+.sell-band h2{font-size:clamp(21px,2.6vw,30px);color:#fff;line-height:1.12}
+.sell-band>div>p{margin-top:11px;font-size:16px;color:rgba(255,255,255,.82);max-width:48ch;
+  line-height:1.6}
+.sell-band .rates{display:flex;gap:26px;margin-top:18px}
+.sell-band .rates b{display:block;font-size:22px;font-weight:800;color:var(--yel);
+  letter-spacing:-.03em}
+.sell-band .rates span{display:block;font-size:13px;color:rgba(255,255,255,.76);margin-top:2px}
+.sell-doors{display:flex;flex-direction:column;gap:12px}
+.sell-doors a{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.1);
+  border-radius:var(--r-l);padding:17px 20px;color:#fff;
+  transition:background .2s var(--ease),color .2s var(--ease)}
+.sell-doors a:hover,.sell-doors a:focus-visible{background:#fff;color:var(--deep)}
+.sell-doors .ic{width:40px;height:40px;flex:0 0 40px;border-radius:50%;background:var(--yel);
+  color:var(--deep);display:grid;place-items:center}
+.sell-doors b{display:block;font-size:16px;font-weight:800}
+.sell-doors span{display:block;font-size:13.5px;opacity:.8;margin-top:2px}
+.sell-doors .arw{margin-left:auto;flex:0 0 16px;transition:transform .22s var(--ease)}
+.sell-doors a:hover .arw{transform:translateX(3px)}
 </style>
 
 </head>
@@ -947,7 +817,7 @@ table.pd-spec td{font-weight:600}
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" style="color:var(--soft)"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
         <input type="search" placeholder="Kente, shea butter…">
       </label>
-      <a href="sell.html" class="sell-lnk">Start selling</a>
+      <a href="sell.html" class="sell-lnk" aria-current="page">Start selling</a>
       <a href="#" class="circ when-out" aria-label="Basket, 2 items"><svg width="19" height="19"><use href="#cart"/></svg><span class="n">2</span></a>
       <a href="#" class="signin-lnk when-out">Sign in</a>
       <a href="#" class="circ when-in" aria-label="Basket, 2 items"><svg width="19" height="19"><use href="#cart"/></svg><span class="n">2</span></a>
@@ -1031,672 +901,260 @@ table.pd-spec td{font-weight:600}
   <!-- breadcrumb -->
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="index.html">Home</a> <span aria-hidden="true">›</span>
-    <a href="shop.html">All products</a> <span aria-hidden="true">›</span>
-    <a href="shop.html">Fabric &amp; textiles</a> <span aria-hidden="true">›</span>
-    <span aria-current="page">Hand-woven kente, 2 yards</span>
+    <span aria-current="page">Start selling</span>
   </nav>
 
   <main id="main" tabindex="-1">
 
-  <div class="pd-top">
-
-    <!-- ============ gallery ============ -->
-    <div class="pd-gal">
-      <div class="pd-main">
-        <div class="pd-shot on" id="shot1" role="img"
-             aria-label="Folded kente cloth in gold, maroon and green, photographed on a plain surface."
-             style="background:linear-gradient(150deg,#CDB68E,#7F6940)"></div>
-        <div class="pd-shot" id="shot2" role="img"
-             aria-label="Close view of the weave showing the gold and maroon warp threads."
-             style="background:linear-gradient(155deg,#D8C49E,#8B7345)"></div>
-        <div class="pd-shot" id="shot3" role="img"
-             aria-label="The cloth draped over a shoulder to show the drop and width."
-             style="background:linear-gradient(140deg,#B79B6B,#6B5730)"></div>
-        <div class="pd-shot" id="shot4" role="img"
-             aria-label="Edge of the cloth beside a tape measure showing the two-yard length."
-             style="background:linear-gradient(160deg,#E0D0AE,#9C8355)"></div>
-        <span class="grain" aria-hidden="true"></span>
-      </div>
-
-      <div class="pd-thumbs" role="group" aria-label="Product photographs">
-        <button class="pd-thumb" data-shot="shot1" aria-pressed="true">
-          <span class="sw" style="background:linear-gradient(150deg,#CDB68E,#7F6940)"></span>
-          <span class="sr-only">Photo 1: folded cloth</span></button>
-        <button class="pd-thumb" data-shot="shot2" aria-pressed="false">
-          <span class="sw" style="background:linear-gradient(155deg,#D8C49E,#8B7345)"></span>
-          <span class="sr-only">Photo 2: close view of the weave</span></button>
-        <button class="pd-thumb" data-shot="shot3" aria-pressed="false">
-          <span class="sw" style="background:linear-gradient(140deg,#B79B6B,#6B5730)"></span>
-          <span class="sr-only">Photo 3: cloth draped over a shoulder</span></button>
-        <button class="pd-thumb" data-shot="shot4" aria-pressed="false">
-          <span class="sw" style="background:linear-gradient(160deg,#E0D0AE,#9C8355)"></span>
-          <span class="sr-only">Photo 4: length beside a tape measure</span></button>
-      </div>
-
-      <p class="pd-photonote">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/>
-          <path d="M12 11v5M12 7.6v.1" stroke-linecap="round"/></svg>
-        Photographs are taken by the seller, not by us.
-      </p>
+  <!-- ============ hero ============ -->
+  <section class="sl-hero">
+    <h1>Sell what you make. Or the work you do.</h1>
+    <p>One account covers both. List products, offer services, or do both from the same
+      dashboard. We handle the payments, the VAT and the buyers.</p>
+    <p class="sl-cta">
+      <a class="go" href="#apply">Apply to sell
+        <svg width="16" height="16" aria-hidden="true"><use href="#arr"/></svg></a>
+      <a class="alt" href="#fees">What it costs</a>
+    </p>
+    <div class="sl-facts">
+      <div><b>48 hours</b><span>to review your application</span></div>
+      <div><b>10%</b><span>commission on products</span></div>
+      <div><b>15%</b><span>commission on services</span></div>
+      <div><b>€0</b><span>to list, and no subscription</span></div>
     </div>
+  </section>
 
-    <!-- ============ buy box ============ -->
-    <div class="pd-buy">
-      <h1>Hand-woven kente, 2 yards</h1>
+  <!-- ============ two ways to earn ============ -->
+  <section class="sl-sec" aria-labelledby="h-two">
+    <h2 id="h-two">Two ways to earn, one account</h2>
+    <p class="lede">You do not choose once and get stuck with it. A braider who also sells hair
+      products lists both from the same place.</p>
 
-      <p class="pd-meta">
-        <span class="st"><svg width="15" height="15"><use href="#star"/></svg>4.9</span>
-        <a href="#reviews">38 reviews</a>
-        <span>Sold by <a href="#">Offeibia</a></span>
-      </p>
-
-      <p class="pd-price">
-        <b>€64.00</b>
-        <s><span class="sr-only">Was </span>€78.00</s>
-        <span class="pd-off">18% off</span>
-      </p>
-      <p class="pd-tax"><b>VAT included.</b> Postage is worked out at checkout, once you
-        have entered where it is going.</p>
-
-      <!-- colour -->
-      <div class="pd-opt">
-        <h2 id="lbl-colour">Colour: <span class="v" id="colour-out">Gold &amp; maroon</span></h2>
-        <div class="pd-swatches" role="radiogroup" aria-labelledby="lbl-colour">
-          <label><input type="radio" name="colour" value="Gold &amp; maroon" checked>
-            <span class="b" style="background:linear-gradient(150deg,#CDB68E,#7F6940)"></span>
-            <span class="sr-only">Gold and maroon</span></label>
-          <label><input type="radio" name="colour" value="Indigo &amp; cream">
-            <span class="b" style="background:linear-gradient(150deg,#4A5C86,#20304F)"></span>
-            <span class="sr-only">Indigo and cream</span></label>
-          <label><input type="radio" name="colour" value="Green &amp; gold">
-            <span class="b" style="background:linear-gradient(150deg,#5C7A4A,#26401F)"></span>
-            <span class="sr-only">Green and gold</span></label>
-          <label><input type="radio" name="colour" value="Black &amp; white">
-            <span class="b" style="background:linear-gradient(150deg,#4A4A48,#17171A)"></span>
-            <span class="sr-only">Black and white</span></label>
-        </div>
-      </div>
-
-      <!-- length -->
-      <div class="pd-opt">
-        <h2 id="lbl-len">Length</h2>
-        <div class="pd-sizes" role="radiogroup" aria-labelledby="lbl-len">
-          <label><input type="radio" name="len" value="1 yard"><span class="b">1 yard</span></label>
-          <label><input type="radio" name="len" value="2 yards" checked><span class="b">2 yards</span></label>
-          <label><input type="radio" name="len" value="4 yards"><span class="b">4 yards</span></label>
-          <label><input type="radio" name="len" value="6 yards" disabled>
-            <span class="b">6 yards</span><span class="sr-only">: out of stock</span></label>
-        </div>
-      </div>
-
-      <div class="pd-qtyrow">
-        <label class="pd-qty">
-          <span>Quantity</span>
-          <select id="qty">
-            <option>1</option><option>2</option><option>3</option>
-            <option>4</option><option>5</option><option>6</option>
-          </select>
-        </label>
-        <p class="pd-stock" id="stock" aria-live="polite">
-          <span class="dot" aria-hidden="true"></span>In stock · 6 available
-        </p>
-      </div>
-
-      <div class="pd-actions">
-        <button class="pd-add" id="addbtn">
-          <svg width="18" height="18" aria-hidden="true"><use href="#cart"/></svg>
-          Add to basket
-        </button>
-        <button class="pd-save" id="savebtn" aria-pressed="false">
-          <svg width="17" height="17" aria-hidden="true"><use href="#heart"/></svg>
-          <span id="savetxt">Save</span>
-        </button>
-      </div>
-      <p class="pd-sep">Products and services are paid for separately, so a service you book
-        will not appear in this basket.</p>
-
-      <!-- seller -->
-      <div class="pd-seller">
-        <div class="who">
-          <span class="av" style="background:#8A6A3E">O</span>
-          <span>
-            <span class="nm">Offeibia
-              <svg class="vf" width="15" height="15" aria-hidden="true"><use href="#check"/></svg>
-              <span class="sr-only">Verified seller</span></span>
-            <span class="sub">4.9 from 214 orders · usually replies within a day</span>
-          </span>
-        </div>
-        <div class="pd-ship">
-          <svg width="19" height="19" aria-hidden="true"><use href="#truck"/></svg>
-          <span><b>Ships from Accra, Ghana.</b> Offeibia estimates 8 working days to Finland.
-            The seller arranges postage and gives you a tracking number.</span>
-        </div>
-        <div class="lnks">
-          <a href="#">Visit shop</a>
-          <a href="#">Ask Offeibia a question</a>
-        </div>
-      </div>
-
-      <!-- protection -->
-      <div class="pd-prot">
-        <details open>
-          <summary>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.1" aria-hidden="true"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/>
-              <path d="M9 12.2l2.1 2.1L15.2 10" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Your money is held until it arrives
-            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"
-                 stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <p class="body">We hold your payment and pass it to Offeibia once you confirm the
-            order arrived, or <b>14 days after tracking shows it delivered</b> if you do not
-            confirm. If nothing has been tracked for <b>21 days</b>, you get a full refund.</p>
-        </details>
-        <details>
-          <summary>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.1" aria-hidden="true"><path d="M3 8h13v9H3zM16 11h3.4l1.6 3v3h-5"
-                 stroke-linejoin="round"/><circle cx="7" cy="18" r="1.9"/><circle cx="17.5" cy="18" r="1.9"/></svg>
-            Returns and changing your mind
-            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"
-                 stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <p class="body">Offeibia accepts returns for <b>14 days</b> after delivery. Sellers set
-            their own window, between 7 and 30 days, so check it on every listing. You pay the
-            return postage unless the item arrived <b>damaged, wrong, or not as described</b>,
-            then we cover it.</p>
-        </details>
-        <details>
-          <summary>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.1" aria-hidden="true"><circle cx="12" cy="12" r="9"/>
-              <path d="M12 11v5.4M12 7.6v.1" stroke-linecap="round"/></svg>
-            If something goes wrong
-            <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"
-                 stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </summary>
-          <p class="body">Message Offeibia first, because most problems are sorted that way. If you
-            cannot agree, open a dispute and our support team reads the order, the messages and
-            the evidence, then decides. Your money stays with us while that happens.</p>
-        </details>
-      </div>
-
-      <p class="pd-pay">
-        <span>Visa</span><span>Mastercard</span><span>PayPal</span>
-        <span>Klarna · pay in 30 days</span>
-      </p>
-    </div>
-  </div>
-
-  <!-- ============ description + specification ============ -->
-  <section class="pd-sec" aria-labelledby="h-about">
-    <h2 id="h-about">About this cloth</h2>
-    <div class="pd-panel pd-cols">
-      <div class="pd-body">
-        <p>Two yards of kente woven on a narrow loom in Bonwire, in the Ashanti region. The
-          strips are woven separately and then hand-stitched together, which is why the pattern
-          steps slightly where they meet. That step is how you tell a woven cloth from a printed
-          one.</p>
-        <p>Heavy enough to hold a fold, soft enough to drape. People buy this length for a
-          stole, a wrap, or to have made into something by a tailor.</p>
-        <h3>Good to know</h3>
+    <div class="sl-two">
+      <article class="sl-card">
+        <span class="ic" aria-hidden="true"><svg width="22" height="22"><use href="#cart"/></svg></span>
+        <h3>Sell products</h3>
+        <p>Anything you make, grow or stock. You set the price and the postage, and you post
+          the order yourself.</p>
         <ul>
-          <li>Colours vary a little between batches, because the yarn is dyed in small lots</li>
-          <li>Wash by hand in cool water, or dry clean. Do not tumble dry</li>
-          <li>Every piece is cut from a continuous weave, so the pattern will not line up
-            identically to the photograph</li>
+          <li>You set your own shipping rates and delivery estimate</li>
+          <li>You set your own returns window, between 7 and 30 days</li>
+          <li>Buyers see a VAT-inclusive price; we handle the VAT</li>
+        </ul>
+        <p class="sl-rate"><b>10%</b><span>commission per sale</span></p>
+      </article>
+
+      <article class="sl-card">
+        <span class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/>
+          </svg></span>
+        <h3>Offer a service</h3>
+        <p>Braiding, tailoring, catering, trades, photography. You decide what is included and
+          when you are free.</p>
+        <ul>
+          <li>Build up to three packages, and say what each one includes</li>
+          <li>Ask buyers what you need to know before you start</li>
+          <li>Message the buyer once the booking is paid</li>
+        </ul>
+        <p class="sl-rate"><b>15%</b><span>commission per booking</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ how it works ============ -->
+  <section class="sl-sec" id="apply" aria-labelledby="h-how">
+    <h2 id="h-how">How you get started</h2>
+    <p class="lede">Four steps. The only one that takes any waiting is ours.</p>
+    <div class="sl-steps">
+      <div class="sl-step">
+        <span class="n" aria-hidden="true">1</span>
+        <h3>Make an account</h3>
+        <p>An email address and a password. Two minutes.</p>
+      </div>
+      <div class="sl-step">
+        <span class="n" aria-hidden="true">2</span>
+        <h3>Apply to sell</h3>
+        <p>Who you are, where you are, and where you want to be paid. See the list below.</p>
+      </div>
+      <div class="sl-step">
+        <span class="n" aria-hidden="true">3</span>
+        <h3>We check it</h3>
+        <p>A person reads every application, within 48 hours. If we say no, we tell you why.</p>
+      </div>
+      <div class="sl-step">
+        <span class="n" aria-hidden="true">4</span>
+        <h3>List and sell</h3>
+        <p>Add products or services, and start taking orders.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ fees ============ -->
+  <section class="sl-sec" id="fees" aria-labelledby="h-fees">
+    <h2 id="h-fees">What it costs</h2>
+    <p class="lede">One number, taken out of what you are paid. Nothing up front.</p>
+    <table class="sl-fees">
+      <caption class="sr-only">Seller fees on Shopziexpress</caption>
+      <tbody>
+        <tr><th scope="row">Commission on a product sale</th><td>10%</td></tr>
+        <tr><th scope="row">Commission on a service booking</th><td>15%</td></tr>
+        <tr><th scope="row">Listing a product or service</th><td>Free</td></tr>
+        <tr><th scope="row">Monthly subscription</th><td>None</td></tr>
+        <tr><th scope="row">Card and payment processing</th><td>We pay it</td></tr>
+      </tbody>
+    </table>
+    <p class="sl-note">Commission comes out of your payout, so you never send us money. Card
+      processing costs about 2.5 to 3 per cent and we absorb it inside the commission rather
+      than adding it to your bill.</p>
+  </section>
+
+  <!-- ============ getting paid ============ -->
+  <section class="sl-sec" aria-labelledby="h-paid">
+    <h2 id="h-paid">Getting paid</h2>
+    <div class="sl-money">
+      <span class="ic" aria-hidden="true">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z"/>
+          <path d="M9 12.2l2.1 2.1L15.2 10"/></svg></span>
+      <div>
+        <h3>The buyer pays us, not you. Then we pay you.</h3>
+        <p>We hold the money while the order is in progress, which is what makes a stranger
+          willing to buy from someone they have never heard of. For a product, your money is
+          released once the buyer confirms it arrived, or 14 days after tracking shows it
+          delivered. For a service, once the buyer confirms the work is done, or after 7 days
+          if they go quiet.</p>
+      </div>
+    </div>
+
+    <div class="sl-cols" style="margin-top:18px">
+      <div class="sl-list">
+        <h3>Payout schedule</h3>
+        <ul>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span><b>Every Friday</b>, for orders completed by Wednesday midnight</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span><b>€10 minimum.</b> Anything smaller rolls over to the following week</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span><b>Bank transfer</b> — SEPA in the EU, local bank in Ghana</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span><b>Mobile money</b> in Ghana, through MTN MoMo or Vodafone Cash</span></li>
         </ul>
       </div>
-      <div>
-        <h3 class="sr-only">Specification</h3>
-        <table class="pd-spec">
-          <tbody>
-            <tr><th scope="row">Material</th><td>Cotton and rayon blend</td></tr>
-            <tr><th scope="row">Width</th><td>112 cm</td></tr>
-            <tr><th scope="row">Length</th><td>2 yards (183 cm)</td></tr>
-            <tr><th scope="row">Weight</th><td>340 g</td></tr>
-            <tr><th scope="row">Woven in</th><td>Bonwire, Ashanti Region, Ghana</td></tr>
-            <tr><th scope="row">Made by</th><td>Offeibia, family workshop of four weavers</td></tr>
-            <tr><th scope="row">Care</th><td>Hand wash cool, or dry clean</td></tr>
-            <tr><th scope="row">Listed</th><td>March 2026</td></tr>
-          </tbody>
-        </table>
+
+      <div class="sl-list">
+        <h3>What you will need to apply</h3>
+        <ul>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>Your <b>full name, date of birth and phone number</b></span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>A <b>home or business address</b></span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>A <b>government ID</b> — passport, national ID or driving licence</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>An <b>IBAN</b>, or a mobile money number if you are in Ghana</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>A business name and VAT number, <b>only if you have them</b></span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ============ delivery and returns ============ -->
-  <section class="pd-sec" aria-labelledby="h-del">
-    <h2 id="h-del">Delivery and returns</h2>
-    <div class="pd-panel">
-      <div class="pd-facts">
-        <div class="pd-fact">
-          <span class="ic"><svg width="19" height="19" aria-hidden="true"><use href="#truck"/></svg></span>
-          <div><h3>About 8 working days</h3>
-            <p>Offeibia's own estimate for Finland. Sellers post their own orders, so the time
-              depends on where they are, not on us.</p></div>
-        </div>
-        <div class="pd-fact">
-          <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2.1" aria-hidden="true"><path d="M4 7h16v13H4z"/>
-            <path d="M4 7l8-4 8 4M9 12h6" stroke-linecap="round"/></svg></span>
-          <div><h3>Postage shown at checkout</h3>
-            <p>The cost depends on the address, so you will see it before you pay — never after.</p></div>
-        </div>
-        <div class="pd-fact">
-          <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2.1" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"
-            stroke-linecap="round"/><path d="M20 4v4.4h-4.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div><h3>14 days to return</h3>
-            <p>Offeibia's window. You pay return postage unless the item was damaged, wrong,
-              or not as described.</p></div>
-        </div>
-        <div class="pd-fact">
-          <span class="ic"><svg width="19" height="19" aria-hidden="true"><use href="#check"/></svg></span>
-          <div><h3>Tracking on every order</h3>
-            <p>The seller adds a tracking number when they post it. If nothing is tracked for
-              21 days, you get a full refund.</p></div>
-        </div>
+  <!-- ============ what you get ============ -->
+  <section class="sl-sec" aria-labelledby="h-get">
+    <h2 id="h-get">What you get</h2>
+    <div class="sl-cols">
+      <div class="sl-list">
+        <h3>Your dashboard</h3>
+        <ul>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>Products and services in one place, with separate tabs if you do both</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>Orders and bookings as they come in</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>What you have earned, and what is still being held</span></li>
+        </ul>
+      </div>
+      <div class="sl-list">
+        <h3>Talking to buyers</h3>
+        <ul>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>Messaging before and after a purchase</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>Email and in-app alerts for new orders and messages</span></li>
+          <li><svg width="17" height="17" aria-hidden="true"><use href="#check"/></svg>
+            <span>Reviews on your profile, which is how new buyers decide</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ============ reviews ============ -->
-  <section class="pd-sec" id="reviews" aria-labelledby="h-rev">
-    <h2 id="h-rev">What buyers said</h2>
-    <div class="pd-panel pd-rev">
-      <div>
-        <div class="pd-score">
-          <b>4.9</b>
-          <span class="stars" aria-hidden="true">
-            <svg width="17" height="17"><use href="#star"/></svg><svg width="17" height="17"><use href="#star"/></svg><svg width="17" height="17"><use href="#star"/></svg><svg width="17" height="17"><use href="#star"/></svg><svg width="17" height="17"><use href="#star"/></svg>
-          </span>
-          <span class="cnt">4.9 out of 5, from 38 reviews</span>
-        </div>
-        <div class="pd-bars">
-          <p class="pd-barrow"><span>5</span><span class="tr"><span class="fl" style="width:89%"></span></span><span>34</span></p>
-          <p class="pd-barrow"><span>4</span><span class="tr"><span class="fl" style="width:8%"></span></span><span>3</span></p>
-          <p class="pd-barrow"><span>3</span><span class="tr"><span class="fl" style="width:3%"></span></span><span>1</span></p>
-          <p class="pd-barrow"><span>2</span><span class="tr"><span class="fl" style="width:0%"></span></span><span>0</span></p>
-          <p class="pd-barrow"><span>1</span><span class="tr"><span class="fl" style="width:0%"></span></span><span>0</span></p>
-        </div>
-      </div>
-
-      <div>
-        <div class="pd-review">
-          <div class="pd-rhead">
-            <span class="av" style="background:#3D6A55">A</span>
-            <span class="nm">Aduke O.</span>
-            <span class="vp"><svg width="12" height="12" aria-hidden="true"><use href="#check"/></svg>Bought this</span>
-            <span class="dt">2 July 2026</span>
-          </div>
-          <p class="sr-only">Rated 5 out of 5</p>
-          <span class="pd-rstars" aria-hidden="true"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span>
-          <p>Arrived in nine days, one more than said, which is nothing. The weave is tight and
-            the colour is deeper than the photo. I had it made into a wrap.</p>
-          <div class="pd-rfoot">
-            <button>Helpful <span class="sr-only">, mark Aduke's review as helpful</span> (12)</button>
-            <button>Report<span class="sr-only"> Aduke's review</span></button>
-          </div>
-        </div>
-
-        <div class="pd-review">
-          <div class="pd-rhead">
-            <span class="av" style="background:#7A4E2C">M</span>
-            <span class="nm">Mika L.</span>
-            <span class="vp"><svg width="12" height="12" aria-hidden="true"><use href="#check"/></svg>Bought this</span>
-            <span class="dt">18 June 2026</span>
-          </div>
-          <p class="sr-only">Rated 4 out of 5</p>
-          <span class="pd-rstars" aria-hidden="true"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span>
-          <p>Good cloth. The join between the strips is visible if you look, which I understand
-            is normal for hand weaving, but I had not expected it. Worth saying in the listing.</p>
-          <div class="pd-rfoot">
-            <button>Helpful <span class="sr-only">, mark Mika's review as helpful</span> (7)</button>
-            <button>Report<span class="sr-only"> Mika's review</span></button>
-          </div>
-        </div>
-
-        <div class="pd-review">
-          <div class="pd-rhead">
-            <span class="av" style="background:#4B5B7A">Y</span>
-            <span class="nm">Yaa B.</span>
-            <span class="vp"><svg width="12" height="12" aria-hidden="true"><use href="#check"/></svg>Bought this</span>
-            <span class="dt">3 June 2026</span>
-          </div>
-          <p class="sr-only">Rated 5 out of 5</p>
-          <span class="pd-rstars" aria-hidden="true"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span>
-          <p>Second order from Offeibia. She answered my message the same evening and sent an
-            extra photo before I paid. That is why I came back.</p>
-          <div class="pd-rfoot">
-            <button>Helpful <span class="sr-only">, mark Yaa's review as helpful</span> (19)</button>
-            <button>Report<span class="sr-only"> Yaa's review</span></button>
-          </div>
-        </div>
-      </div>
+  <!-- ============ faq ============ -->
+  <section class="sl-sec" aria-labelledby="h-faq">
+    <h2 id="h-faq">Questions people ask</h2>
+    <div class="sl-faq">
+      <details open>
+        <summary>Can I sell products and offer services at the same time?
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="body">Yes, and most people who do both earn more. It is one application and
+          one dashboard, with a tab for each.</p>
+      </details>
+      <details>
+        <summary>Do I need a registered business?
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="body">No. Business name and VAT number are optional. You do need a government
+          ID and a bank account or mobile money number in your own name.</p>
+      </details>
+      <details>
+        <summary>Who handles VAT?
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="body">We do. VAT is worked out at checkout based on where the buyer is,
+          collected by us, and reported on your behalf. Buyers always see a price with VAT
+          already in it.</p>
+      </details>
+      <details>
+        <summary>What if a buyer says the order never arrived?
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="body">Message them first — most things are sorted that way. If you cannot
+          agree, either of you can open a dispute and our support team reads the order, the
+          messages and the tracking, then decides. Tracking is what protects you, so always
+          add it.</p>
+      </details>
+      <details>
+        <summary>Where are the buyers?
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+               stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <p class="body">Mostly Finland to begin with, then the rest of the EU. Services are
+          bought locally, so if you offer one, buyers near you will find you first.</p>
+      </details>
     </div>
   </section>
 
-  <!-- ============ more from this shop ============ -->
-  <section class="pd-sec" aria-labelledby="h-shop">
-    <h2 id="h-shop">More from Offeibia</h2>
-    <div class="pd-grid row-scroll" tabindex="0" role="group" aria-label="More from this seller, scrollable">
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#C6A97C,#6E5A33)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Kente stole, 1 yard to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Kente stole, 1 yard</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€34.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Kente stole, 1 yard</span></button>
-        </div>
-      </article>
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#8E9C74,#3E4A2C)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Adinkra print, 4 yards to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Adinkra print, 4 yards</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€52.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Adinkra print, 4 yards</span></button>
-        </div>
-      </article>
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#B8836A,#5E3826)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Woven table runner to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Woven table runner</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€28.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Woven table runner</span></button>
-        </div>
-      </article>
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#9C8FB0,#463C5C)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Off-cut bundle, 500 g to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Off-cut bundle, 500 g</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€16.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Off-cut bundle, 500 g</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#C9A15E,#6B4F22)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Kente clutch bag to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Kente clutch bag</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€26.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Kente clutch bag</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#A8B79A,#48583A)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Strip-woven scarf to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Strip-woven scarf</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€31.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Strip-woven scarf</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#B98C8C,#5C3838)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Kente cushion cover to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Kente cushion cover</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€22.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Kente cushion cover</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#CBB8DA,#5A4770)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Two-yard sampler pack to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Two-yard sampler pack</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€48.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Two-yard sampler pack</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#9FBAC4,#3F5A64)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Hand-loomed placemats, 4 to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Hand-loomed placemats, 4</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€27.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Hand-loomed placemats, 4</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#D5B78A,#7A5C30)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Offcut patchwork throw to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Offeibia <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Offcut patchwork throw</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 8 days</p>
-          <p class="pr">€64.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Offcut patchwork throw</span></button>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============ related ============ -->
-  <section class="pd-sec" aria-labelledby="h-rel">
-    <h2 id="h-rel">People also looked at</h2>
-    <div class="pd-grid row-scroll" tabindex="0" role="group" aria-label="Products other people looked at, scrollable">
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#D6A362,#87551F)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Bogolan mud cloth, 2 yards to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Debbies <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Bogolan mud cloth, 2 yards</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Kumasi · 9 days</p>
-          <p class="pr">€58.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Bogolan mud cloth, 2 yards</span></button>
-        </div>
-      </article>
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#7FA3B8,#2F4A5C)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Indigo tie-dye, 6 yards to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Ama Textiles <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Indigo tie-dye, 6 yards</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 7 days</p>
-          <p class="pr">€71.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Indigo tie-dye, 6 yards</span></button>
-        </div>
-      </article>
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#C98F8F,#6B3434)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Wax print, 6 yards to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Nana Fabrics <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Wax print, 6 yards</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Lomé · 10 days</p>
-          <p class="pr">€44.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Wax print, 6 yards</span></button>
-        </div>
-      </article>
-
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#B0A88C,#514B36)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Raffia basket, large to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Bolga Craft <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Raffia basket, large</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Bolgatanga · 11 days</p>
-          <p class="pr">€39.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Raffia basket, large</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#A8C4B0,#3E5A48)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Batik cotton, 3 yards to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Kwesi Cloth <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Batik cotton, 3 yards</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Cape Coast · 9 days</p>
-          <p class="pr">€36.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Batik cotton, 3 yards</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#C9A8B8,#5E3E4E)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Aso oke, 2 yards to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Yemi Weaves <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Aso oke, 2 yards</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Lagos · 12 days</p>
-          <p class="pr">€89.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Aso oke, 2 yards</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#DCCFA8,#8A7B4A)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Shea butter, 1 kg to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Nuru <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Shea butter, 1 kg</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Tamale · 10 days</p>
-          <p class="pr">€21.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Shea butter, 1 kg</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#C4B48E,#6E5E38)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Bolga market basket to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Bolga Craft <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Bolga market basket</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Bolgatanga · 11 days</p>
-          <p class="pr">€44.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Bolga market basket</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#8FA8C4,#39506E)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Kufi cap, cotton to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Nana Fabrics <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Kufi cap, cotton</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Lomé · 10 days</p>
-          <p class="pr">€18.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Kufi cap, cotton</span></button>
-        </div>
-      </article>
-      <article class="pd-card">
-        <div class="cimg" style="background:linear-gradient(150deg,#D2A6A6,#6E4040)">
-          <button class="pd-fav" aria-pressed="false" aria-label="Save Beaded waist strand to your list">
-            <svg width="15" height="15" aria-hidden="true"><use href="#heart"/></svg></button>
-          <span class="grain" aria-hidden="true"></span>
-        </div>
-        <div class="in">
-          <p class="sl">Ama Textiles <svg class="vf" width="12" height="12" aria-hidden="true"><use href="#check"/></svg></p>
-          <h3><a href="product.html">Beaded waist strand</a></h3>
-          <p class="shp"><svg width="12" height="12" aria-hidden="true"><use href="#truck"/></svg>Accra · 7 days</p>
-          <p class="pr">€14.00<small>VAT included</small></p>
-          <button class="buy">Add to basket<span class="sr-only">: Beaded waist strand</span></button>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ============ cross-sell to services ============ -->
-  <div class="pd-cross">
+  <!-- ============ closing ============ -->
+  <div class="sl-end">
     <div class="t">
-      <h2>Bought the cloth. Now find someone to sew it.</h2>
-      <p>Tailors in Helsinki, Espoo and Vantaa who work with woven cloth. You see the price
-        and what is included before you book.</p>
+      <h2>Ready when you are</h2>
+      <p>Applying takes about ten minutes, and a person will have read it within two days.</p>
     </div>
-    <a href="services.html">Find a tailor
-      <span class="arw" aria-hidden="true"><svg width="15" height="15"><use href="#arr"/></svg></span>
-    </a>
+    <p class="sl-cta" style="margin:0">
+      <a class="go" href="#apply">Apply to sell
+        <svg width="16" height="16" aria-hidden="true"><use href="#arr"/></svg></a>
+    </p>
   </div>
 
-  <p class="pd-note">Everything on this page is placeholder content for design review. Prices,
-    sellers, reviews and delivery times are invented.</p>
+  <p class="pd-note">All figures on this page come from the product requirements document.
+    Everything else in the prototype is placeholder content for design review.</p>
 
   </main>
 
@@ -1737,7 +1195,7 @@ table.pd-spec td{font-weight:600}
     <div class="dgroup">
       <h2>Browse</h2>
       <a class="item" href="index.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7M6 10v10h12V10"/></svg>Home</a>
-      <a class="item" href="shop.html" aria-current="page"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 4.2h2l1 2.6M6.4 6.8h14l-2.2 8H8.6z"/><circle cx="10" cy="18.4" r="1.4" fill="currentColor"/><circle cx="16.4" cy="18.4" r="1.4" fill="currentColor"/></svg>Products</a>
+      <a class="item" href="shop.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 4.2h2l1 2.6M6.4 6.8h14l-2.2 8H8.6z"/><circle cx="10" cy="18.4" r="1.4" fill="currentColor"/><circle cx="16.4" cy="18.4" r="1.4" fill="currentColor"/></svg>Products</a>
       <a class="item" href="services.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Services</a>
       <a class="item" href="#"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16v11H4z"/><path d="M3 5h18l-1 4H4z"/></svg>Shops</a>
       <a class="item" href="#"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor"/></svg>Deals</a>
@@ -1746,7 +1204,7 @@ table.pd-spec td{font-weight:600}
     <div class="dgroup">
       <h2>Sell</h2>
       <a class="item" href="sell.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Start selling</a>
-      <a class="item" href="sell.html"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Offer a service</a>
+      <a class="item" href="sell.html" aria-current="page"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Offer a service</a>
       <a class="item" href="#"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M17 6.5A6 6 0 108 17M4 10h9M4 14h9"/></svg>Fees &amp; payouts</a>
     </div>
     <div class="dsep"></div>
@@ -1808,70 +1266,6 @@ table.pd-spec td{font-weight:600}
       else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
     }
   });
-})();
-</script>
-
-<div class="states" role="group" aria-label="Preview state (prototype only)">
-  <span>Stock</span>
-  <button data-stock="ok" aria-pressed="true">In stock</button>
-  <button data-stock="low" aria-pressed="false">Only 2 left</button>
-  <button data-stock="out" aria-pressed="false">Sold out</button>
-</div>
-
-<script>
-/* ---- product detail: gallery, options, save, basket ---- */
-(function(){
-  /* gallery. Buttons, not links: they change what is shown, they do not navigate. */
-  const thumbs=[...document.querySelectorAll('.pd-thumb')];
-  thumbs.forEach(t=>t.addEventListener('click',()=>{
-    thumbs.forEach(o=>o.setAttribute('aria-pressed', String(o===t)));
-    document.querySelectorAll('.pd-shot').forEach(sh=>
-      sh.classList.toggle('on', sh.id===t.dataset.shot));
-  }));
-
-  /* echo the chosen colour into the heading, so the name is never
-     carried by the swatch colour alone */
-  const out=document.getElementById('colour-out');
-  document.querySelectorAll('input[name="colour"]').forEach(r=>
-    r.addEventListener('change',()=>{ if(r.checked) out.textContent=r.value; }));
-
-  /* save toggle */
-  const save=document.getElementById('savebtn'), stxt=document.getElementById('savetxt');
-  save.addEventListener('click',()=>{
-    const on=save.getAttribute('aria-pressed')==='true';
-    save.setAttribute('aria-pressed',String(!on));
-    stxt.textContent=on?'Save':'Saved';
-  });
-
-  /* add to basket: confirm in the live region rather than with a toast that
-     disappears before a screen reader announces it */
-  const add=document.getElementById('addbtn'), stock=document.getElementById('stock');
-  add.addEventListener('click',()=>{
-    if(add.disabled) return;
-    const qty=document.getElementById('qty').value;
-    const was=stock.innerHTML;
-    stock.innerHTML='<span class="dot" aria-hidden="true"></span>'+
-      qty+' added to your basket';
-    setTimeout(()=>{stock.innerHTML=was},3200);
-  });
-
-  /* prototype-only stock states */
-  const states={
-    ok:{cls:'',html:'In stock · 6 available',dis:false},
-    low:{cls:'low',html:'Only 2 left',dis:false},
-    out:{cls:'out',html:'Sold out. Ask Offeibia when more is woven.',dis:true}
-  };
-  document.querySelectorAll('[data-stock]').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('[data-stock]').forEach(o=>
-      o.setAttribute('aria-pressed',String(o===b)));
-    const st=states[b.dataset.stock];
-    stock.className='pd-stock '+st.cls;
-    stock.innerHTML='<span class="dot" aria-hidden="true"></span>'+st.html;
-    add.disabled=st.dis;
-    add.innerHTML = st.dis
-      ? 'Sold out'
-      : '<svg width="18" height="18" aria-hidden="true"><use href="#cart"/></svg> Add to basket';
-  }));
 })();
 </script>
 
